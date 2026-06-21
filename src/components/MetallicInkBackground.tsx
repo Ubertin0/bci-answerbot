@@ -64,19 +64,20 @@ const FRAGMENT_SHADER = `
 
   vec3 sampleColorA(vec2 uv) {
     float n = fbm(uv * 3.0 + u_time * 0.2);
-    return vec3(0.92, 0.90, 0.85) + n * 0.1;
+    // Near-black base — charcoal with warm micro-texture
+    return vec3(0.02, 0.02, 0.015) + n * 0.03;
   }
 
   vec3 sampleColorB(vec2 uv) {
     vec2 p = uv * 2.0;
     float n = fbm(p + fbm(p + u_time * 0.1));
-    vec3 warmGold = vec3(0.75, 0.6, 0.4);
-    vec3 bronze = vec3(0.4, 0.3, 0.2);
-    vec3 cream = vec3(0.95, 0.92, 0.85);
+    vec3 warmGold = vec3(0.50, 0.40, 0.18);
+    vec3 bronze = vec3(0.25, 0.20, 0.08);
+    vec3 cream = vec3(0.12, 0.10, 0.05);
     float t = smoothstep(0.3, 0.7, n);
     vec3 color = mix(cream, bronze, t);
     float highlight = smoothstep(0.5, 0.8, n);
-    return mix(color, warmGold, highlight * 0.3);
+    return mix(color, warmGold, highlight * 0.35);
   }
 
   vec3 sampleColorC(vec2 uv) {
@@ -107,7 +108,10 @@ const FRAGMENT_SHADER = `
     }
     float mouseDist = length(uv - u_mouse);
     float mouseInfluence = smoothstep(0.5, 0.0, mouseDist);
-    color += u_mouseVel * mouseInfluence * 0.5;
+    // Increased cursor glow for contrast on dark background
+    color += u_mouseVel * mouseInfluence * 1.2;
+    // Strong darkening — near-black canvas for white text readability
+    color = clamp(color * 0.25 + 0.02, 0.0, 1.0);
     gl_FragColor = vec4(color, 1.0);
   }
 `;

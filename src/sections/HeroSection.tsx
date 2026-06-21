@@ -1,35 +1,6 @@
-import { useEffect, useRef, useCallback } from 'react';
 import MetallicInkBackground from '../components/MetallicInkBackground';
 
 export default function HeroSection() {
-  const titleRef = useRef<HTMLDivElement>(null);
-  const rotateRef = useRef({ x: 0, y: 0 });
-
-  const handleMouseMove = useCallback((e: MouseEvent) => {
-    const nx = (e.clientX / window.innerWidth - 0.5) * 2;
-    const ny = (e.clientY / window.innerHeight - 0.5) * 2;
-    rotateRef.current = {
-      x: -ny * 30,
-      y: nx * 25,
-    };
-    if (titleRef.current) {
-      titleRef.current.style.transform = `rotateX(${rotateRef.current.x}deg) rotateY(${rotateRef.current.y}deg)`;
-    }
-  }, []);
-
-  useEffect(() => {
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, [handleMouseMove]);
-
-  const splitText = (text: string) => {
-    return text.split('').map((char, i) => (
-      <span key={i} className="letter" data-text={char}>
-        {char === ' ' ? '\u00A0' : char}
-      </span>
-    ));
-  };
-
   const handleScrollTo = (id: string) => {
     const el = document.querySelector(id);
     if (el) el.scrollIntoView({ behavior: 'smooth' });
@@ -38,42 +9,29 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative w-full overflow-hidden"
+      className="relative w-full overflow-hidden bg-[#040404]"
       style={{ height: '100vh', minHeight: '600px' }}
     >
       <MetallicInkBackground />
 
-      {/* Fallback image behind canvas */}
-      <div
-        className="absolute inset-0 z-0"
-        style={{
-          backgroundImage: 'url(/images/hero-fallback.jpg)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      />
-
       {/* Content overlay */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full px-6 text-center">
-        <div
-          ref={titleRef}
-          className="animated-title"
-          style={{ perspective: '1000px', perspectiveOrigin: 'center' }}
+        <h1
+          className="font-display text-white leading-[1.1] tracking-tight max-w-[900px]"
+          style={{
+            fontSize: 'clamp(1.8rem, 5vw, 4rem)',
+            textShadow: '0 4px 60px rgba(0,0,0,0.95), 0 0 100px rgba(0,0,0,0.8), 0 2px 30px rgba(0,0,0,0.9)',
+          }}
         >
-          <h1
-            className="font-display text-white leading-[1.05] tracking-tight"
-            style={{
-              fontSize: 'clamp(2.5rem, 7vw, 6rem)',
-              textShadow: '0 4px 40px rgba(0,0,0,0.5), 0 0 120px rgba(0,0,0,0.3)',
-            }}
-          >
-            {splitText('Automate the First Line')}
-          </h1>
-        </div>
+          ИИ-агент для автоматизации первой линии поддержки
+        </h1>
 
         <p
           className="mt-8 font-mono text-warmgray max-w-[640px] leading-relaxed"
-          style={{ fontSize: 'clamp(0.8rem, 1.1vw, 1rem)' }}
+          style={{
+            fontSize: 'clamp(0.8rem, 1.1vw, 1rem)',
+            textShadow: '0 2px 20px rgba(0,0,0,0.9)',
+          }}
         >
           Локальный ИИ-агент для автоматизации первой линии поддержки.
           <br />
