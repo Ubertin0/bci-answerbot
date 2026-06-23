@@ -77,12 +77,7 @@ export default function DemoSection() {
   const [typingIndex, setTypingIndex] = useState(-1);
   const [displayedText, setDisplayedText] = useState('');
   const [isTyping, setIsTyping] = useState(false);
-  const chatEndRef = useRef<HTMLDivElement>(null);
   const fullMessageRef = useRef('');
-
-  const scrollToBottom = () => {
-    chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  };
 
   const typeMessage = useCallback((text: string, onComplete: () => void) => {
     fullMessageRef.current = text;
@@ -139,9 +134,7 @@ export default function DemoSection() {
     }
   }, [typingIndex, activeTab]);
 
-  useEffect(() => {
-    scrollToBottom();
-  }, [chatMessages, displayedText]);
+
 
   const renderMessageText = (text: string) => {
     return text.split('\n').map((line, i) => {
@@ -286,7 +279,7 @@ export default function DemoSection() {
               </div>
             )}
 
-            <div ref={chatEndRef} />
+
           </div>
 
           {/* Input bar (visual only) */}

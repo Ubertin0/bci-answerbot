@@ -1,9 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
 
-interface NavigationProps {
-  lenisRef: React.MutableRefObject<any>;
-}
-
 const NAV_LINKS = [
   { label: 'Возможности', target: '#features' },
   { label: 'Демо-стенд', target: '#demo' },
@@ -11,7 +7,7 @@ const NAV_LINKS = [
   { label: 'Стоимость', target: '#pricing' },
 ];
 
-export default function Navigation({ lenisRef }: NavigationProps) {
+export default function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
 
@@ -24,9 +20,8 @@ export default function Navigation({ lenisRef }: NavigationProps) {
   }, []);
 
   const handleNavClick = (target: string) => {
-    if (lenisRef.current) {
-      lenisRef.current.scrollTo(target, { offset: -80 });
-    }
+    const el = document.querySelector(target);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (

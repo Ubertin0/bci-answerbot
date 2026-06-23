@@ -104,22 +104,7 @@
     color: #D1D1C9;
   }
 
-  .custom-cursor {
-    width: 32px;
-    height: 32px;
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    border-radius: 50%;
-    position: fixed;
-    pointer-events: none;
-    z-index: 9999;
-    transition: transform 0.15s ease-out, opacity 0.15s ease-out;
-    mix-blend-mode: difference;
-  }
 
-  .custom-cursor.hover {
-    transform: scale(0.5);
-    opacity: 0.8;
-  }
 }
 
 @layer utilities {
