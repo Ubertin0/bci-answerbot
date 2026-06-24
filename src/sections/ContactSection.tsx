@@ -1,15 +1,11 @@
 import { useState } from 'react';
 
 export default function ContactSection() {
-  const [email, setEmail] = useState('');
-  const [telegram, setTelegram] = useState('');
   const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (email.trim()) {
-      setSubmitted(true);
-    }
+    setSubmitted(true);
   };
 
   return (
@@ -29,34 +25,6 @@ export default function ContactSection() {
 
         {!submitted ? (
           <form onSubmit={handleSubmit} className="fade-blur-element max-w-[500px] mx-auto">
-            <div className="space-y-4 mb-6">
-              <div>
-                <label className="block font-mono text-[10px] text-warmgray/40 tracking-widest uppercase mb-2">
-                  Корпоративный Email *
-                </label>
-                <input
-                  type="email"
-                  required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="name@company.ru"
-                  className="w-full px-4 py-3 bg-white/[0.03] border border-white/10 rounded-lg font-mono text-sm text-white placeholder:text-warmgray/20 focus:outline-none focus:border-brand-base/50 transition-colors"
-                />
-              </div>
-              <div>
-                <label className="block font-mono text-[10px] text-warmgray/40 tracking-widest uppercase mb-2">
-                  Telegram для связи
-                </label>
-                <input
-                  type="text"
-                  value={telegram}
-                  onChange={(e) => setTelegram(e.target.value)}
-                  placeholder="@username"
-                  className="w-full px-4 py-3 bg-white/[0.03] border border-white/10 rounded-lg font-mono text-sm text-white placeholder:text-warmgray/20 focus:outline-none focus:border-brand-base/50 transition-colors"
-                />
-              </div>
-            </div>
-
             <button
               type="submit"
               className="w-full py-4 bg-brand-base text-[#040404] font-heading font-bold text-sm rounded-lg hover:brightness-110 transition-all duration-300"
@@ -64,18 +32,37 @@ export default function ContactSection() {
               Запросить технический One-Pager
             </button>
 
-            <p className="text-center mt-4">
-              <a
-                href="#"
-                onClick={(e) => {
-                  e.preventDefault();
-                  alert('Форма бронирования звонка будет доступна после отправки заявки.');
-                }}
-                className="font-mono text-[11px] text-warmgray/30 hover:text-brand-base transition-colors underline underline-offset-2"
-              >
-                Или забронировать 30-минутный технический звонок с инженером внедрения
-              </a>
-            </p>
+            <div className="text-center mt-6 space-y-3">
+              <p className="font-mono text-[11px] text-warmgray/30">
+                Или свяжитесь напрямую:
+              </p>
+              <div className="flex justify-center gap-6">
+                <a
+                  href="https://www.linkedin.com/in/eugene-balandin"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-mono text-[11px] text-warmgray/40 hover:text-brand-base transition-colors underline underline-offset-2"
+                >
+                  LinkedIn
+                </a>
+                <a
+                  href="https://t.me/BalandinEugene"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-mono text-[11px] text-warmgray/40 hover:text-brand-base transition-colors underline underline-offset-2"
+                >
+                  Telegram
+                </a>
+                <a
+                  href="https://wa.me/79029824436"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-mono text-[11px] text-warmgray/40 hover:text-brand-base transition-colors underline underline-offset-2"
+                >
+                  WhatsApp
+                </a>
+              </div>
+            </div>
           </form>
         ) : (
           <div className="fade-blur-element text-center py-12">
@@ -88,8 +75,34 @@ export default function ContactSection() {
               Заявка отправлена
             </h3>
             <p className="font-mono text-warmgray/50 text-sm max-w-[400px] mx-auto">
-              Мы подготовим технический One-Pager и отправим его вам в течение 24 часов. Также вы можете забронировать звонок с инженером.
+              Мы подготовим технический One-Pager и отправим его вам в течение 24 часов. Также вы можете связаться с нами через мессенджеры.
             </p>
+            <div className="flex justify-center gap-6 mt-6">
+              <a
+                href="https://www.linkedin.com/in/eugene-balandin"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-mono text-[11px] text-warmgray/40 hover:text-brand-base transition-colors underline underline-offset-2"
+              >
+                LinkedIn
+              </a>
+              <a
+                href="https://t.me/BalandinEugene"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-mono text-[11px] text-warmgray/40 hover:text-brand-base transition-colors underline underline-offset-2"
+              >
+                Telegram
+              </a>
+              <a
+                href="https://wa.me/79029824436"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-mono text-[11px] text-warmgray/40 hover:text-brand-base transition-colors underline underline-offset-2"
+              >
+                WhatsApp
+              </a>
+            </div>
           </div>
         )}
       </div>

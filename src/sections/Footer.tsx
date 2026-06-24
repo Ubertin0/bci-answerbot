@@ -54,20 +54,32 @@ export default function Footer() {
               <ul className="space-y-3">
                 <li>
                   <a
-                    href="mailto:info@balandin-cloud.ru"
-                    className="font-mono text-warmgray/50 text-xs hover:text-brand-base transition-colors"
-                  >
-                    info@balandin-cloud.ru
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://linkedin.com/company/balandin-cloud-infrastructure/"
+                    href="https://www.linkedin.com/in/eugene-balandin"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="font-mono text-warmgray/50 text-xs hover:text-brand-base transition-colors"
                   >
                     LinkedIn
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://t.me/BalandinEugene"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-mono text-warmgray/50 text-xs hover:text-brand-base transition-colors"
+                  >
+                    Telegram
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://wa.me/79029824436"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-mono text-warmgray/50 text-xs hover:text-brand-base transition-colors"
+                  >
+                    WhatsApp
                   </a>
                 </li>
               </ul>
