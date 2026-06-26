@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 1.6%;
+    --foreground: 0 0% 100%;
+    --card: 0 0% 97.6%;
+    --card-foreground: 0 0% 1.6%;
+    --popover: 0 0% 1.6%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 73 24% 76%;
+    --primary-foreground: 0 0% 1.6%;
+    --secondary: 220 6% 83%;
+    --secondary-foreground: 0 0% 1.6%;
+    --muted: 220 6% 83%;
+    --muted-foreground: 220 6% 50%;
+    --accent: 82 85% 56%;
+    --accent-foreground: 0 0% 1.6%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 73 24% 76%;
+    --input: 220 6% 83%;
+    --ring: 73 24% 76%;
+    --radius: 0.75rem;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3 {
+    word-break: keep-all;
+  }
+}
+
+@layer components {
+  .font-display {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+  }
+
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .fade-blur-element {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateY(1rem);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                filter 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .fade-blur-visible {
+    opacity: 1;
+    filter: blur(0px);
+    transform: translateY(0);
+  }
+
+  .animated-title {
+    display: block;
+    position: relative;
+    width: max-content;
+    margin: 0 auto;
+    transform-style: preserve-3d;
+    transition: transform 0.1s ease-out;
+  }
+
+  .letter {
+    display: inline-block;
+    position: relative;
+    transform-style: preserve-3d;
+    text-transform: none;
+    z-index: 20;
+  }
+
+  .letter::before,
+  .letter::after {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    content: attr(data-text);
+    color: #FFFFFF;
+    pointer-events: none;
+  }
+
+  .letter::before {
+    z-index: 10;
+    transform: translateZ(10px);
+    color: #F8F9FA;
+  }
+
+  .letter::after {
+    z-index: 1;
+    transform: translateZ(0px);
+    color: #D1D1C9;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}

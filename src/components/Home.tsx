@@ -1,5 +1,7 @@
+'use client';
+
 import { useFadeBlur } from '../hooks/useFadeBlur';
-import Navigation from '../components/Navigation';
+import Navigation from './Navigation';
 import HeroSection from '../sections/HeroSection';
 import ProblemSection from '../sections/ProblemSection';
 import DemoSection from '../sections/DemoSection';
