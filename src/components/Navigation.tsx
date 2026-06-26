@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 
 const NAV_LINKS = [
   { label: 'Возможности', target: '#features' },
-  { label: 'Демо-стенд', target: '#demo' },
+  { label: 'Калькулятор ROI', target: '#demo' },
   { label: 'Архитектура', target: '#architecture' },
   { label: 'Стоимость', target: '#pricing' },
 ];

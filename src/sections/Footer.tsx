@@ -28,7 +28,7 @@ export default function Footer() {
               <ul className="space-y-3">
                 {[
                   { label: 'Возможности', target: '#features' },
-                  { label: 'Демо-стенд', target: '#demo' },
+                  { label: 'Калькулятор ROI', target: '#demo' },
                   { label: 'Архитектура', target: '#architecture' },
                   { label: 'Стоимость', target: '#pricing' },
                 ].map((link) => (
