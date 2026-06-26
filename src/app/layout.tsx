@@ -2,13 +2,47 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://balandin-cloud.ru'),
   title: 'BCI — 100% On-Premise ИИ-агент для первой линии поддержки (RAG)',
-  description: 'Локальный AI-answerbot для Enterprise. Автоматизация L1 поддержки без облачных зависимостей. Полная безопасность данных и развертывание на вашем оборудовании.',
+  description: 'Локальный ИИ-агент с RAG. Air-Gap, 152-ФЗ, интеграция с n8n/Qdrant/Ollama. Закрывает до 60% тикетов L1 без облаков.',
+  keywords: ['ИИ-агент', 'RAG', 'On-Premise', 'L1-поддержка', 'Air-Gap', '152-ФЗ', 'n8n', 'Qdrant', 'Ollama'],
+  authors: [{ name: 'Eugene Balandin', url: 'https://www.linkedin.com/in/eugene-balandin' }],
+  alternates: {
+    canonical: 'https://balandin-cloud.ru/',
+  },
+  icons: {
+    icon: '/bci-favicon.svg',
+    shortcut: '/bci-favicon.svg',
+  },
   openGraph: {
-    title: 'BCI — Локальный ИИ-агент поддержки',
-    description: '100% On-Premise RAG-система для бизнеса. Никаких облаков, полный контроль над данными.',
-    type: 'website',
+    title: 'BCI — 100% On-Premise ИИ-агент для L1-поддержки',
+    description: 'Локальный ИИ-агент с RAG. Air-Gap, 152-ФЗ. Закрывает до 60% тикетов L1.',
     url: 'https://balandin-cloud.ru/',
+    siteName: 'Balandin Cloud Intelligence',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'BCI — On-Premise ИИ-агент',
+      },
+    ],
+    locale: 'ru_RU',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'BCI — 100% On-Premise ИИ-агент',
+    description: 'Локальный ИИ-агент с RAG. Air-Gap, 152-ФЗ.',
+    images: ['/og-image.png'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
   },
 };
 
@@ -21,7 +55,6 @@ export default function RootLayout({
     <html lang="ru">
       <head>
         <meta charSet="UTF-8" />
-        <link rel="icon" type="image/svg+xml" href="/bci-favicon.svg" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono:wght@400&family=Playfair+Display:ital,wght@1,400&display=swap" rel="stylesheet" />
