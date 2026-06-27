@@ -43,13 +43,13 @@ export default function HeroSection() {
             onClick={() => handleScrollTo('#demo')}
             className="px-8 py-3 bg-brand-base text-[#040404] font-heading font-bold text-sm rounded hover:brightness-110 transition-all duration-300"
           >
-            Испытать на демо-стенде
+            Калькулятор окупаемости
           </button>
           <button
             onClick={() => handleScrollTo('#pricing')}
             className="px-8 py-3 border border-brand-base text-brand-base font-heading text-sm rounded hover:bg-brand-base hover:text-[#040404] transition-all duration-300"
           >
-            Получить расчет окупаемости (ROI)
+            Стоимость владения
           </button>
         </div>
       </div>
