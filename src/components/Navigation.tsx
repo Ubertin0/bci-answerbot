@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { Menu, X } from 'lucide-react';
 
 const NAV_LINKS = [
   { label: 'Возможности', target: '#features' },
@@ -9,6 +10,7 @@ const NAV_LINKS = [
 
 export default function Navigation() {
   const [scrolled, setScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -64,7 +66,45 @@ export default function Navigation() {
         >
           Связаться с инженером
         </button>
+
+        {/* Hamburger */}
+        <button
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          className="md:hidden text-warmgray hover:text-white transition-colors"
+          aria-label="Toggle menu"
+        >
+          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
       </div>
+
+      {/* Mobile menu */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden bg-[#040404] border-t border-white/5">
+          <nav className="flex flex-col px-6 py-4 gap-1">
+            {NAV_LINKS.map((link) => (
+              <button
+                key={link.target}
+                onClick={() => {
+                  handleNavClick(link.target);
+                  setIsMobileMenuOpen(false);
+                }}
+                className="text-left py-3 text-sm text-warmgray hover:text-white transition-colors font-heading border-b border-white/5 last:border-b-0"
+              >
+                {link.label}
+              </button>
+            ))}
+            <button
+              onClick={() => {
+                handleNavClick('#contact');
+                setIsMobileMenuOpen(false);
+              }}
+              className="mt-2 py-3 border border-brand-base text-brand-base text-sm font-heading rounded hover:bg-brand-base hover:text-[#040404] transition-all duration-300"
+            >
+              Связаться с инженером
+            </button>
+          </nav>
+        </div>
+      )}
     </header>
   );
 }
