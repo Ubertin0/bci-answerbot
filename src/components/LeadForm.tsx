@@ -165,7 +165,13 @@ export default function LeadForm() {
           className="mt-1 w-4 h-4 bg-[#0a0a0a] border border-white/10 rounded focus:ring-brand-base focus:ring-2"
         />
         <label htmlFor="consent" className="text-xs font-mono text-warmgray/60 leading-relaxed">
-          Я согласен на обработку персональных данных в соответствии с политикой конфиденциальности <span className="text-red-500">*</span>
+          <span className="relative group cursor-pointer inline-block">
+            Я согласен на обработку персональных данных в соответствии с политикой конфиденциальности <span className="text-red-500">*</span>
+            <div className="absolute bottom-full left-0 mb-2 w-64 md:w-80 p-3 bg-slate-800 text-xs text-slate-300 rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 border border-slate-700">
+              <p className="font-semibold text-white mb-1">Политика конфиденциальности</p>
+              <p>Мы собираем ваше имя и контактные данные исключительно для обратной связи и проведения технического аудита. Ваши данные не передаются третьим лицам и не хранятся за пределами защищенного контура. Оставляя заявку, вы даете согласие на их обработку.</p>
+            </div>
+          </span>
         </label>
       </div>
 
