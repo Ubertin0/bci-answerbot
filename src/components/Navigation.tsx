@@ -3,7 +3,7 @@ import { Menu, X } from 'lucide-react';
 
 const NAV_LINKS = [
   { label: 'Возможности', target: '#features' },
-  { label: 'Калькулятор ROI', target: '#demo' },
+  { label: 'Калькулятор ROI', target: '#calculator' },
   { label: 'Архитектура', target: '#architecture' },
   { label: 'Стоимость', target: '#pricing' },
 ];
@@ -64,7 +64,7 @@ export default function Navigation() {
           onClick={() => handleNavClick('#contact')}
           className="hidden md:block px-5 py-2 border border-brand-base text-brand-base text-sm font-heading rounded hover:bg-brand-base hover:text-[#040404] transition-all duration-300"
         >
-          Связаться с инженером
+          Запросить аудит
         </button>
 
         {/* Hamburger */}
@@ -100,7 +100,7 @@ export default function Navigation() {
               }}
               className="mt-2 py-3 border border-brand-base text-brand-base text-sm font-heading rounded hover:bg-brand-base hover:text-[#040404] transition-all duration-300"
             >
-              Связаться с инженером
+              Запросить аудит
             </button>
           </nav>
         </div>

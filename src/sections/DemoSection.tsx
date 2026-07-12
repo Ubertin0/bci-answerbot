@@ -4,7 +4,7 @@ import RoiCalculator from '../components/RoiCalculator';
 export default function DemoSection() {
   return (
     <section
-      id="demo"
+      id="calculator"
       className="relative w-full py-24 lg:py-32 overflow-hidden"
       style={{ backgroundColor: '#040404' }}
     >
