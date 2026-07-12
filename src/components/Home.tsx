@@ -6,6 +6,7 @@ import HeroSection from '../sections/HeroSection';
 import ProblemSection from '../sections/ProblemSection';
 import DemoSection from '../sections/DemoSection';
 import ArchitectureSection from '../sections/ArchitectureSection';
+import ExpertSection from '../sections/ExpertSection';
 import PricingSection from '../sections/PricingSection';
 import ContactSection from '../sections/ContactSection';
 import Footer from '../sections/Footer';
@@ -21,6 +22,7 @@ export default function Home() {
         <ProblemSection />
         <DemoSection />
         <ArchitectureSection />
+        <ExpertSection />
         <PricingSection />
         <ContactSection />
       </main>
