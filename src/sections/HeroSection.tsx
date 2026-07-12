@@ -1,3 +1,4 @@
+import { Check, AlertTriangle } from 'lucide-react';
 import MetallicInkBackground from '../components/MetallicInkBackground';
 
 export default function HeroSection() {
@@ -14,7 +15,6 @@ export default function HeroSection() {
     >
       <MetallicInkBackground />
 
-      {/* Content overlay */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full px-6 text-center">
         <h1
           className="font-display text-white leading-[1.1] tracking-tight max-w-[900px]"
@@ -23,7 +23,9 @@ export default function HeroSection() {
             textShadow: '0 4px 60px rgba(0,0,0,0.95), 0 0 100px rgba(0,0,0,0.8), 0 2px 30px rgba(0,0,0,0.9)',
           }}
         >
-          ИИ-агент для автоматизации первой линии поддержки
+          Вы теряете{' '}
+          <span className="text-brand-base">3 миллиона рублей</span>{' '}
+          в месяц на рутинных тикетах
         </h1>
 
         <p
@@ -33,28 +35,63 @@ export default function HeroSection() {
             textShadow: '0 2px 20px rgba(0,0,0,0.9)',
           }}
         >
-          Локальный ИИ-агент для автоматизации первой линии поддержки.
+          Пока ваши операторы L1 отвечают на одни и те же вопросы,
           <br />
-          Закрывает до 70% типовых обращений 24/7. Без абонентской платы и риска утечки данных.
+          ИИ-агенты забирают до 60% нагрузки.
+        </p>
+
+        <p
+          className="mt-4 font-mono text-warmgray/80 max-w-[640px] leading-relaxed"
+          style={{
+            fontSize: 'clamp(0.75rem, 1vw, 0.9rem)',
+            textShadow: '0 2px 20px rgba(0,0,0,0.9)',
+          }}
+        >
+          BCI — локальный RAG-агент, который закрывает тикеты за 30 секунд вместо 15 минут.
+          <br />
+          Без облаков. Без утечек. Строго по 152-ФЗ.
         </p>
 
         <div className="mt-10 flex flex-col sm:flex-row gap-4 items-center">
           <button
-            onClick={() => handleScrollTo('#demo')}
-            className="px-8 py-3 bg-brand-base text-[#040404] font-heading font-bold text-sm rounded hover:brightness-110 transition-all duration-300"
+            onClick={() => handleScrollTo('#calculator')}
+            className="px-8 py-3 bg-brand-base text-[#040404] font-heading font-bold text-sm rounded hover:brightness-110 transition-all duration-300 shadow-[0_0_30px_rgba(212,175,55,0.3)]"
           >
-            Калькулятор окупаемости
+            Рассчитать, сколько я теряю
           </button>
           <button
-            onClick={() => handleScrollTo('#pricing')}
+            onClick={() => handleScrollTo('#contact')}
             className="px-8 py-3 border border-brand-base text-brand-base font-heading text-sm rounded hover:bg-brand-base hover:text-[#040404] transition-all duration-300"
           >
-            Стоимость владения
+            Обсудить архитектуру
           </button>
+        </div>
+
+        <div className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-x-8 gap-y-4 max-w-[700px]">
+          {[
+            'SLA ответа ИИ-агента — 30 секунд',
+            'Потенциал автоматизации L1 до 60%',
+            '100% On-Premise (Air-Gap)',
+            'Работает на вашем железе',
+          ].map((item) => (
+            <div
+              key={item}
+              className="flex items-center gap-2 text-warmgray/90 text-xs font-mono"
+            >
+              <Check className="w-4 h-4 text-brand-base flex-shrink-0" />
+              <span>{item}</span>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-10 flex items-center gap-3 px-5 py-3 rounded-lg border border-yellow-500/30 bg-yellow-500/5">
+          <AlertTriangle className="w-5 h-5 text-yellow-500 flex-shrink-0" />
+          <span className="text-yellow-500/90 text-xs font-mono">
+            Берем в интеграцию не более 3 инфраструктур в месяц для гарантии SLA.
+          </span>
         </div>
       </div>
 
-      {/* Bottom marquee */}
       <div className="absolute bottom-0 left-0 w-full z-10 border-t border-white/10 bg-[#040404]/60 backdrop-blur-sm py-3 overflow-hidden">
         <div className="flex whitespace-nowrap animate-marquee">
           <span className="font-mono text-[11px] text-warmgray tracking-widest mx-8">
