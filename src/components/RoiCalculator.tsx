@@ -14,22 +14,30 @@ export default function RoiCalculator() {
   const calculatorRef = useRef<HTMLDivElement>(null);
   const [isExporting, setIsExporting] = useState(false);
 
-  const handleExportPDF = async () => {
-    if (!calculatorRef.current) return;
+  const handleExportPDF = () => {
     setIsExporting(true);
-    try {
-      const canvas = await html2canvas(calculatorRef.current, { scale: 2 });
-      const imgData = canvas.toDataURL('image/png');
-      const pdf = new jsPDF('p', 'mm', 'a4');
-      const pdfWidth = pdf.internal.pageSize.getWidth();
-      const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
-      pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
-      pdf.save('bci-roi-report.pdf');
-    } catch (error) {
-      console.error('PDF export error:', error);
-    } finally {
-      setIsExporting(false);
-    }
+    setTimeout(async () => {
+      if (!calculatorRef.current) return;
+      try {
+        const canvas = await html2canvas(calculatorRef.current, {
+          scale: 2,
+          backgroundColor: '#0f172a',
+          windowWidth: 1200,
+        });
+        const imgData = canvas.toDataURL('image/jpeg', 0.95);
+        const pdf = new jsPDF('p', 'mm', 'a4');
+        const pdfWidth = pdf.internal.pageSize.getWidth();
+        const imgRatio = canvas.width / canvas.height;
+        const pdfHeight = pdfWidth / imgRatio;
+
+        pdf.addImage(imgData, 'JPEG', 0, 0, pdfWidth, pdfHeight);
+        pdf.save('BCI_ROI_Report.pdf');
+      } catch (error) {
+        console.error('Ошибка экспорта:', error);
+      } finally {
+        setIsExporting(false);
+      }
+    }, 150);
   };
 
   const metrics = useMemo(() => {
@@ -60,6 +68,21 @@ export default function RoiCalculator() {
   return (
     <div className="w-full max-w-6xl mx-auto">
       <div ref={calculatorRef} className="p-4 md:p-8 bg-slate-50 text-slate-900 font-sans rounded-2xl">
+      {isExporting && (
+        <div className="mb-8 pb-6 border-b border-slate-700">
+          <div className="flex justify-between items-end">
+            <div>
+              <h2 className="text-3xl font-bold text-white mb-2">BCI | Balandin Cloud</h2>
+              <p className="text-slate-400">Технико-экономическое обоснование (ТЭО) внедрения RAG-агента</p>
+            </div>
+            <div className="text-right text-sm text-slate-500">
+              <p>Дата формирования: {new Date().toLocaleDateString('ru-RU')}</p>
+              <p>Контур: 100% On-Premise (Air-Gap)</p>
+            </div>
+          </div>
+        </div>
+      )}
+
       <div className="mb-8">
         <h2 className="text-3xl font-bold text-slate-900 flex items-center gap-3 mb-2">
           <Calculator className="w-8 h-8 text-blue-600" />
@@ -203,6 +226,22 @@ export default function RoiCalculator() {
           </div>
         </div>
       </div>
+
+      {isExporting && (
+        <div className="mt-10 pt-6 border-t border-slate-700 bg-slate-900/50 p-6 rounded-lg">
+          <h3 className="text-xl font-bold text-white mb-4">Следующий шаг: Технический аудит</h3>
+          <div className="grid grid-cols-2 gap-4 text-slate-300">
+            <div>
+              <p className="font-semibold text-white">Евгений Баландин</p>
+              <p>Архитектор решения</p>
+            </div>
+            <div className="text-right">
+              <p>Telegram: @balandin_cloud</p>
+              <p>Email: hello@balandin-cloud.ru</p>
+            </div>
+          </div>
+        </div>
+      )}
       </div>
 
       <button
