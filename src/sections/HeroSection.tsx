@@ -23,13 +23,23 @@ export default function HeroSection() {
             textShadow: '0 4px 60px rgba(0,0,0,0.95), 0 0 100px rgba(0,0,0,0.8), 0 2px 30px rgba(0,0,0,0.9)',
           }}
         >
-          Вы теряете{' '}
-          <span className="text-brand-base">3 миллиона рублей</span>{' '}
+          Вы теряете до{' '}
+          <span className="text-brand-base">3 млн ₽</span>{' '}
           в месяц на рутинных тикетах
         </h1>
 
         <p
-          className="mt-8 font-mono text-warmgray max-w-[640px] leading-relaxed"
+          className="mt-3 font-mono text-warmgray/50 max-w-[640px] leading-relaxed"
+          style={{
+            fontSize: 'clamp(0.65rem, 0.8vw, 0.75rem)',
+            textShadow: '0 2px 20px rgba(0,0,0,0.9)',
+          }}
+        >
+          * Расчёт для штата L1 от 10 человек с учётом ФОТ, налогов и HR-издержек.
+        </p>
+
+        <p
+          className="mt-6 font-mono text-warmgray max-w-[640px] leading-relaxed"
           style={{
             fontSize: 'clamp(0.8rem, 1.1vw, 1rem)',
             textShadow: '0 2px 20px rgba(0,0,0,0.9)',
@@ -37,7 +47,7 @@ export default function HeroSection() {
         >
           Пока ваши операторы L1 отвечают на одни и те же вопросы,
           <br />
-          ИИ-агенты забирают до 60% нагрузки.
+          ИИ-агенты забирают до 70% нагрузки.
         </p>
 
         <p
@@ -77,8 +87,8 @@ export default function HeroSection() {
 
         <div className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-x-8 gap-y-4 max-w-[700px]">
           {[
-            'SLA ответа ИИ-агента — 30 секунд',
-            'Потенциал автоматизации L1 до 60%',
+            'SLA ответа — 30 секунд',
+            'Потенциал автоматизации L1 — до 70%',
             '100% On-Premise (Air-Gap)',
             'Работает на вашем железе',
           ].map((item) => (
@@ -95,17 +105,17 @@ export default function HeroSection() {
         <div className="mt-10 flex items-center gap-3 px-5 py-3 rounded-lg border border-yellow-500/30 bg-yellow-500/5">
           <AlertTriangle className="w-5 h-5 text-yellow-500 flex-shrink-0" />
           <span className="text-yellow-500/90 text-xs font-mono">
-            Берем в интеграцию не более 3 инфраструктур в месяц для гарантии SLA.
+            Берём в интеграцию не более 3 инфраструктур в месяц для гарантии SLA.
           </span>
         </div>
       </div>
 
       <div className="absolute bottom-0 left-0 w-full z-10 border-t border-white/10 bg-[#040404]/60 backdrop-blur-sm py-3 overflow-hidden">
-        <div className="flex whitespace-nowrap animate-marquee">
+        <div className="inline-flex whitespace-nowrap animate-marquee">
           <span className="font-mono text-[11px] text-warmgray tracking-widest mx-8">
             On-Premise LLM Inference • n8n Orchestration • Qdrant Vector DB • Full Air-Gap • 152-FZ Compliant •
           </span>
-          <span className="font-mono text-[11px] text-warmgray tracking-widest mx-8">
+          <span className="font-mono text-[11px] text-warmgray tracking-widest mx-8" aria-hidden="true">
             On-Premise LLM Inference • n8n Orchestration • Qdrant Vector DB • Full Air-Gap • 152-FZ Compliant •
           </span>
         </div>
