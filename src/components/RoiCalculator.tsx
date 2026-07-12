@@ -1,5 +1,7 @@
-import { useState, useMemo } from 'react';
-import { Calculator, TrendingDown, Clock, Server, BarChart3, ShieldCheck } from 'lucide-react';
+import { useState, useMemo, useRef } from 'react';
+import { Calculator, TrendingDown, Clock, Server, BarChart3, ShieldCheck, Download } from 'lucide-react';
+import html2canvas from 'html2canvas';
+import { jsPDF } from 'jspdf';
 
 export default function RoiCalculator() {
   const [l1Staff, setL1Staff] = useState(5);
@@ -9,6 +11,26 @@ export default function RoiCalculator() {
   const [hardwareCost, setHardwareCost] = useState(1400000);
   const [integrationCost, setIntegrationCost] = useState(500000);
   const [automationRate, setAutomationRate] = useState(60);
+  const calculatorRef = useRef<HTMLDivElement>(null);
+  const [isExporting, setIsExporting] = useState(false);
+
+  const handleExportPDF = async () => {
+    if (!calculatorRef.current) return;
+    setIsExporting(true);
+    try {
+      const canvas = await html2canvas(calculatorRef.current, { scale: 2 });
+      const imgData = canvas.toDataURL('image/png');
+      const pdf = new jsPDF('p', 'mm', 'a4');
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+      pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+      pdf.save('bci-roi-report.pdf');
+    } catch (error) {
+      console.error('PDF export error:', error);
+    } finally {
+      setIsExporting(false);
+    }
+  };
 
   const metrics = useMemo(() => {
     const currentMonthlyCost = (l1Staff * avgSalary) + nightShiftCost + hrCost;
@@ -36,7 +58,8 @@ export default function RoiCalculator() {
   const heightWithAI = `${(metrics.tcoWithAI_1Yr / maxTco) * 100}%`;
 
   return (
-    <div className="w-full max-w-6xl mx-auto p-4 md:p-8 bg-slate-50 text-slate-900 font-sans rounded-2xl">
+    <div className="w-full max-w-6xl mx-auto">
+      <div ref={calculatorRef} className="p-4 md:p-8 bg-slate-50 text-slate-900 font-sans rounded-2xl">
       <div className="mb-8">
         <h2 className="text-3xl font-bold text-slate-900 flex items-center gap-3 mb-2">
           <Calculator className="w-8 h-8 text-blue-600" />
@@ -180,6 +203,16 @@ export default function RoiCalculator() {
           </div>
         </div>
       </div>
+      </div>
+
+      <button
+        onClick={handleExportPDF}
+        disabled={isExporting}
+        className="mt-6 flex items-center justify-center gap-2 px-6 py-3 bg-slate-800 text-white rounded-lg hover:bg-slate-700 transition disabled:opacity-50 mx-auto"
+      >
+        <Download className="w-4 h-4" />
+        {isExporting ? 'Генерация...' : 'Скачать расчет в PDF'}
+      </button>
     </div>
   );
 }
