@@ -53,18 +53,26 @@ export default function HeroSection() {
         </p>
 
         <div className="mt-10 flex flex-col sm:flex-row gap-4 items-center">
-          <button
-            onClick={() => handleScrollTo('#calculator')}
+          <a
+            href="#calculator"
+            onClick={(e) => {
+              e.preventDefault();
+              handleScrollTo('#calculator');
+            }}
             className="px-8 py-3 bg-brand-base text-[#040404] font-heading font-bold text-sm rounded hover:brightness-110 transition-all duration-300 shadow-[0_0_30px_rgba(212,175,55,0.3)]"
           >
             Рассчитать, сколько я теряю
-          </button>
-          <button
-            onClick={() => handleScrollTo('#contact')}
+          </a>
+          <a
+            href="#contact"
+            onClick={(e) => {
+              e.preventDefault();
+              handleScrollTo('#contact');
+            }}
             className="px-8 py-3 border border-brand-base text-brand-base font-heading text-sm rounded hover:bg-brand-base hover:text-[#040404] transition-all duration-300"
           >
             Обсудить архитектуру
-          </button>
+          </a>
         </div>
 
         <div className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-x-8 gap-y-4 max-w-[700px]">
