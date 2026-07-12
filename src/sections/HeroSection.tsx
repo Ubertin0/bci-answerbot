@@ -105,7 +105,7 @@ export default function HeroSection() {
         <div className="mt-10 flex items-center gap-3 px-5 py-3 rounded-lg border border-yellow-500/30 bg-yellow-500/5">
           <AlertTriangle className="w-5 h-5 text-yellow-500 flex-shrink-0" />
           <span className="text-yellow-500/90 text-xs font-mono">
-            Берём в интеграцию не более 3 инфраструктур в месяц для гарантии SLA.
+            Беру в интеграцию не более 3 инфраструктур в месяц для гарантии SLA.
           </span>
         </div>
       </div>
