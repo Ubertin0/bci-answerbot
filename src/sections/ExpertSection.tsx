@@ -19,7 +19,7 @@ export default function ExpertSection() {
           >
             <div className="relative w-[280px] h-[340px] rounded-2xl overflow-hidden shadow-[0_0_60px_rgba(74,100,65,0.15)] border border-white/5">
               <Image
-                src="/images/expert-photo.JPG"
+                src="/images/expert-photo.jpg"
                 alt="Евгений Баландин — архитектор решения BCI"
                 fill
                 className="object-cover"

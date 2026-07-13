@@ -47,7 +47,7 @@ export default function HeroSection() {
         >
           Пока ваши операторы L1 отвечают на одни и те же вопросы,
           <br />
-          ИИ-агенты забирают до 70% нагрузки.
+          ИИ-агенты забирают до 60% нагрузки.
         </p>
 
         <p
@@ -88,7 +88,7 @@ export default function HeroSection() {
         <div className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-x-8 gap-y-4 max-w-[700px]">
           {[
             'SLA ответа — 30 секунд',
-            'Потенциал автоматизации L1 — до 70%',
+            'Потенциал автоматизации L1 — до 60%',
             '100% On-Premise (Air-Gap)',
             'Работает на вашем железе',
           ].map((item) => (
