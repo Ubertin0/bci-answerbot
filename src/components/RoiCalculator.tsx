@@ -236,8 +236,9 @@ export default function RoiCalculator() {
               <p>Архитектор решения</p>
             </div>
             <div className="text-right">
-              <p>Telegram: @balandin_cloud</p>
-              <p>Email: hello@balandin-cloud.ru</p>
+              <p>Telegram: @BalandinEugene</p>
+              <p>WhatsApp: +7 902 982-44-36</p>
+              <p>LinkedIn: linkedin.com/in/eugene-balandin</p>
             </div>
           </div>
         </div>
@@ -247,7 +248,7 @@ export default function RoiCalculator() {
       <button
         onClick={handleExportPDF}
         disabled={isExporting}
-        className="mt-6 flex items-center justify-center gap-2 px-6 py-3 bg-slate-800 text-white rounded-lg hover:bg-slate-700 transition disabled:opacity-50 mx-auto"
+        className="mt-6 flex w-full md:w-auto items-center justify-center gap-2 px-6 py-3 bg-slate-800 text-white rounded-lg hover:bg-slate-700 transition disabled:opacity-50"
       >
         <Download className="w-4 h-4" />
         {isExporting ? 'Генерация...' : 'Скачать расчет в PDF'}
