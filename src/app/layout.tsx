@@ -19,14 +19,6 @@ export const metadata: Metadata = {
     description: 'Локальный ИИ-агент с RAG. Air-Gap, 152-ФЗ. Закрывает до 60% тикетов L1.',
     url: 'https://balandin-cloud.ru/',
     siteName: 'Balandin Cloud Intelligence',
-    images: [
-      {
-        url: '/og-image.png',
-        width: 1200,
-        height: 630,
-        alt: 'BCI — On-Premise ИИ-агент',
-      },
-    ],
     locale: 'ru_RU',
     type: 'website',
   },
@@ -34,7 +26,6 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'BCI — 100% On-Premise ИИ-агент',
     description: 'Локальный ИИ-агент с RAG. Air-Gap, 152-ФЗ.',
-    images: ['/og-image.png'],
   },
   robots: {
     index: true,
